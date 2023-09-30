@@ -20,7 +20,7 @@ if [[ $1 = 'gql' ]]; then
 
     if [[ $2 = '-d' ]]; then
         docker-compose up -d --build web
-        docker exec ${PROJECT}_web_1 ./manage.sh gql
+        docker exec ${PROJECT}-web-1 ./manage.sh gql
         docker-compose down
     fi
 
