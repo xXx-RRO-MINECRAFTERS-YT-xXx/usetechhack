@@ -2,6 +2,17 @@
 
 PROJECT=${PWD##*/}
 
+if [[ $1 = 'help' ]]; then
+    echo "usage: ./helper.sh [option]"
+    echo ""
+    echo "OPTIONS:"
+    echo "help         Это сообщение"
+    echo "config       Генерация .env"
+    echo "gql          Генерация shema.json для GraphQL"
+    echo "build        Собрать фронтенд"
+
+fi
+
 if [[ $1 = 'config' ]]; then
     rm -rf docs/
     cat ./kernel/.env.example >> ./kernel/.env
@@ -30,9 +41,9 @@ fi
 
 if [[ $1 = 'build' ]]; then
     docker-compose up -d --build webclient
-    docker exec ${PROJECT}_webclient_1 yarn install
-    docker exec ${PROJECT}_webclient_1 yarn relay
-    docker exec ${PROJECT}_webclient_1 yarn build
+    docker exec ${PROJECT}-webclient-1 yarn install
+    docker exec ${PROJECT}-webclient-1 yarn relay
+    docker exec ${PROJECT}-webclient-1 yarn build
     docker-compose down
 
     rm -f client/schema.json
