@@ -24,7 +24,7 @@ if [[ $1 = 'config' ]]; then
     # Client configs
     cat ./client/.env.example >> ./client/.env
     echo "Don't forget to change env file in client application"
-    exit 1
+    exit 0
 fi
 
 if [[ $1 = 'gql' ]]; then
@@ -36,7 +36,7 @@ if [[ $1 = 'gql' ]]; then
     fi
 
     cp ./kernel/schema.json ./client/schema.json
-    exit 1
+    exit 0
 fi
 
 if [[ $1 = 'build' ]]; then
@@ -51,5 +51,5 @@ if [[ $1 = 'build' ]]; then
     cp -r client/build kernel/webclient
     rm -rf client/build
 
-    exit 1
+    exit 0
 fi
