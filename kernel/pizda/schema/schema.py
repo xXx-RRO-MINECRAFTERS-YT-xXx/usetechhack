@@ -3,12 +3,6 @@
 import graphene
 from pizda.services.jwt import generate_jwt_token
 
-
-class Query(
-    ObjectType,
-):
-    pass
-
 class GenerateTokenMutation(graphene.Mutation):
     class Arguments:
         access = graphene.String(required=True)
