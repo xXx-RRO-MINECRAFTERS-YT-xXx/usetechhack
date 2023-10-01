@@ -1,6 +1,6 @@
 import requests
-import jwt
 import json
+from jwt.algorithms import RSAAlgorithm
 
 KEYCLOAK_URL = 'https://your-keycloak-url/auth/realms/your-realm'
 KEY_ID = 'your-key-id'
@@ -13,7 +13,7 @@ def get_public_key():
 
     for key in keys:
         if key['kid'] == KEY_ID:
-            public_key = jwt.algorithms.RSAAlgorithm.from_jwk(json.dumps(key))
+            public_key = RSAAlgorithm.from_jwk(json.dumps(key))
             break
 
     if not public_key:
