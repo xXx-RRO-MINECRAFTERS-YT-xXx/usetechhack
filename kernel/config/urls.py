@@ -13,9 +13,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/<str:service>", include("pizda.services.urls")),
-    path("password_reset/<str:token>", include("pizda.services.urls")),
-    path("email_confirm/<str:token>", include("pizda.services.urls")),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -3,6 +3,10 @@
 import os
 
 
+from datetime import timedelta
+
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -104,8 +108,24 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GRAPHENE = {
-    "SCHEMA": "config.schema.schema"
+    "SCHEMA": "config.schema.schema",
+        "MIDDLEWARE": [
+        "graphql_jwt.middleware.JSONWebTokenMiddleware",
+    ],
+
 }
+
+JWT_AUTH = {
+    'JWT_SECRET_KEY': os.getenv('SECRET_KEY'),  # Замените на ваш секретный ключ
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),  # Продолжительность действия токена
+}
+
+AUTHENTICATION_BACKENDS = [
+    "graphql_jwt.backends.JSONWebTokenBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 
 try:
     from .local_settings import *
