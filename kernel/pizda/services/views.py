@@ -14,6 +14,7 @@ def verify_token(request):
 
     try:
         decoded_token = jwt.decode(token, public_key, algorithms=['RS256'])
+        decoded_token
         return JsonResponse({'message': 'Токен действителен', 'decoded_token': decoded_token})
     except jwt.exceptions.InvalidTokenError:
         return JsonResponse({'message': 'Недействительный токен'}, status=401)

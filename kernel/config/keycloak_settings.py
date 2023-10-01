@@ -2,8 +2,8 @@ import requests
 import json
 from jwt.algorithms import RSAAlgorithm
 
-KEYCLOAK_URL = 'https://your-keycloak-url/auth/realms/your-realm'
-KEY_ID = 'your-key-id'
+KEYCLOAK_URL = 'https://dev.mtuci.online:8080/auth'
+KEY_ID = 'gDRgbRYWrnKXZ0c3e8UT0Jnjv6auJlnQ1vbJlbjF-9w'
 
 
 def get_public_key():
