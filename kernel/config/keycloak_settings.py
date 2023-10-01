@@ -2,7 +2,7 @@ import requests
 import json
 from jwt.algorithms import RSAAlgorithm
 
-KEYCLOAK_URL = 'https://dev.mtuci.online:8080/auth'
+KEYCLOAK_URL = 'http://0.0.0.0:8080'
 KEY_ID = 'gDRgbRYWrnKXZ0c3e8UT0Jnjv6auJlnQ1vbJlbjF-9w'
 
 
